@@ -3,7 +3,7 @@ This repository contains the code to reproduce the results of the paper _Active 
 
 ## Workflow
 
-Download the RACE ([here](https://huggingface.co/datasets/ehovy/race) and RACE-c ([here](https://huggingface.co/datasets/tasksource/race-c) dataset. Together, these datasets form the RACE++ dataset. Save the datasets in the `data/raw/` folder.
+Download the RACE ([here](https://huggingface.co/datasets/ehovy/race)) and RACE-c ([here](https://huggingface.co/datasets/tasksource/race-c)) dataset. Together, these datasets form the RACE++ dataset. Save the datasets in the `data/raw/` folder.
 
 Prepare the datasets by running:
 ```
