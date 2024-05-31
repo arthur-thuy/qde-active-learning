@@ -1,0 +1,42 @@
+AL:
+  EPOCHS: 96
+  FULL_DATA: false
+  HEURISTIC: variance
+  INIT_ACTIVE_BALANCED: false
+  INIT_ACTIVE_SIZE: 500
+  QUERY_SIZE: 100
+  SUBSET_POOL: 5000
+  TEMPERATURE: 1.0
+DEVICE:
+  BETTERTRANSFORMER: false
+  NO_CUDA: false
+  NO_MPS: false
+EVAL:
+  BATCH_SIZE: 256
+  LOGGING_STEPS: 0.02
+  MC_SAMPLES: 10
+ID: distilbert-base-uncased-regr-variance-MCD-N96-Q100-I500-S5000-BFalse
+LOADER:
+  NAME: race_pp
+  REGRESSION: true
+  SMALL_DEV: true
+MODEL:
+  BF16: true
+  MAX_LENGTH: 256
+  MC_DROPOUT: true
+  NAME: distilbert-base-uncased
+  NUM_LABELS: 1
+OUTPUT_DIR: ./output/race_pp
+RUNS: 1
+SEED: 42
+TRAIN:
+  ADAM_EPSILON: 1.0e-08
+  BATCH_SIZE: 64
+  EARLY_STOPPING: false
+  EPOCHS: 10
+  FREEZE_BASE: false
+  LR: 2.0e-05
+  MAX_STEPS: -1
+  PATIENCE: 6
+  WARMUP_RATIO: 0.1
+  WEIGHT_DECAY: 0.05
