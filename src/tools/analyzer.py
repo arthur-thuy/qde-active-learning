@@ -168,6 +168,13 @@ class Dict2Class(object):
     """
 
     def __init__(self, my_dict: dict):
+        """Turn a dictionary into a class with attributes.
+
+        Parameters
+        ----------
+        my_dict : dict
+            Dict to convert to class
+        """
         for key in my_dict:
             setattr(self, key, my_dict[key])
 

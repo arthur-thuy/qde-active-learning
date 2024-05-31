@@ -1,25 +1,34 @@
-from typing import Dict
+"""Abstract data manager.
+
+Adapted from Github repo qdet_utils/data_manager/_data_manager.py
+"""
+
 import os
+from typing import Dict
+
 import pandas as pd
 
 from tools.constants import (
-    DEV,
-    TEST,
-    TRAIN,
-    DF_COLS,
     CONTEXT,
-    QUESTION,
-    Q_ID,
+    DEV,
+    DF_COLS,
     DIFFICULTY,
+    Q_ID,
+    QUESTION,
+    TEST,
+    TF_ANS_ID,
     TF_CORRECT,
     TF_DESCRIPTION,
     TF_QUESTION_ID,
-    TF_ANS_ID,
+    TRAIN,
 )
 
 
 class DataManager:
+    """Abstract data manager."""
+
     def __init__(self):
+        """No constructor."""
         pass
 
     TF_AS_TYPE_DICT = {
@@ -38,6 +47,19 @@ class DataManager:
         dataset_name: str,
         skip_answers_texts: bool,
     ) -> None:
+        """Convert dataset to transformers format and store it.
+
+        Parameters
+        ----------
+        dataset : Dict[str, pd.DataFrame]
+            Dataset to convert.
+        data_dir : str
+            Directory to store the dataset.
+        dataset_name : str
+            Name of the dataset.
+        skip_answers_texts : bool
+            Whether to skip answers texts.
+        """
         answer_texts_df = pd.DataFrame(columns=self.TF_DF_COLS_ANS_DF)
 
         text_difficulty_df, answer_texts_df = self.get_text_difficulty_and_answer_texts(
@@ -82,7 +104,25 @@ class DataManager:
                 index=False,
             )
 
-    def get_text_difficulty_and_answer_texts(self, df, answers_text_df, skip_ans_texts):
+    def get_text_difficulty_and_answer_texts(
+        self, df: pd.DataFrame, answers_text_df: pd.DataFrame, skip_ans_texts: bool
+    ) -> tuple[pd.DataFrame, pd.DataFrame]:
+        """Get text difficulty and answer texts.
+
+        Parameters
+        ----------
+        df : pd.DataFrame
+            Dataframe with text difficulty.
+        answers_text_df : pd.DataFrame
+            Dataframe with answer texts.
+        skip_ans_texts : bool
+            Whether to skip answers texts.
+
+        Returns
+        -------
+        tuple[pd.DataFrame, pd.DataFrame]
+            Dataframes of text difficulty and answer texts.
+        """
         text_difficulty_df = pd.DataFrame(columns=self.TF_DF_COLS_TEXT_DIFFICULTY_DF)
         if skip_ans_texts:
             for question, context, q_id, difficulty in df[
@@ -132,7 +172,25 @@ class DataManager:
                 )
         return text_difficulty_df, answers_text_df
 
-    def _get_new_rows_answers_text_df(self, correct_ans, q_id, options):
+    def _get_new_rows_answers_text_df(
+        self, correct_ans: str, q_id: str, options: list
+    ) -> pd.DataFrame:
+        """Append new rows to answers text dataframe.
+
+        Parameters
+        ----------
+        correct_ans : str
+            Correct answer
+        q_id : str
+            Question ID
+        options : list
+            List of answer options
+
+        Returns
+        -------
+        pd.DataFrame
+            Dataframe with new row
+        """
         out_df = pd.DataFrame(columns=self.TF_DF_COLS_ANS_DF)
         for idx, option in enumerate(options):
             new_row = pd.DataFrame(
@@ -154,7 +212,27 @@ class DataManager:
             )
         return out_df
 
-    def _get_new_row_text_difficulty_df(self, q_id, question, context, difficulty):
+    def _get_new_row_text_difficulty_df(
+        self, q_id: str, question: str, context: str, difficulty: int
+    ) -> pd.DataFrame:
+        """Build new DF row for text difficulty.
+
+        Parameters
+        ----------
+        q_id : str
+            Question ID
+        question : str
+            Question content
+        context : str
+            Context content
+        difficulty : int
+            Difficulty level
+
+        Returns
+        -------
+        pd.DataFrame
+            Dataframe with single row
+        """
         context = "" if not isinstance(context, str) else context + " "
         return pd.DataFrame(
             [

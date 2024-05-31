@@ -30,6 +30,7 @@ class Registry(dict):
     """
 
     def __init__(self, *args, **kwargs):
+        """Subclass of dict with register function."""
         super(Registry, self).__init__(*args, **kwargs)
 
     def register(self, module_name) -> Callable:

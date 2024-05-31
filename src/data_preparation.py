@@ -1,6 +1,8 @@
+"""Module for data preparation."""
+
 import structlog
 
-from tools.constants import WRITE_DIR, RACE_PP
+from tools.constants import RACE_PP, WRITE_DIR
 from tools.data_manager import RaceDatamanager
 
 # set logger
@@ -8,6 +10,7 @@ log = structlog.get_logger()
 
 
 def main():
+    """Run data preparation."""
     # RACE++
     log.info("Starting preparation RACE++")
     race_data_dir = "../data/raw/RACE"

@@ -32,14 +32,35 @@ class QDET:
         small_dev: bool,
         seed: Optional[int] = 42,
     ):
+        """Initialize QDET dataset.
+
+        Parameters
+        ----------
+        name : str
+            Name of the dataset.
+        num_classes : int
+            Number of classes.
+        regression : bool
+            Whether regression or classification.
+        small_dev : bool
+            Whether to use small dev set.
+        seed : Optional[int], optional
+            Random seed, by default 42
+        """
         self.name = name
         self.num_classes = num_classes
         self.regression = regression
         self.small_dev = small_dev
         self.seed = seed
 
-    def preprocess_datasets(self):
-        """Preprocess datasets."""
+    def preprocess_datasets(self) -> DatasetDict:
+        """Preprocess datasets.
+
+        Returns
+        -------
+        DatasetDict
+            Dict of dataset splits.
+        """
         df_train_original = pd.read_csv(
             os.path.join(
                 "../data/processed", f"tf_{self.name}_text_difficulty_train.csv"
