@@ -1,5 +1,6 @@
 # Active Learning to Guide Labeling Efforts for Question Difficulty Estimation
-This repository contains the code to reproduce the results of the paper _Active Learning to Guide Labeling Efforts for Question Difficulty Estimation_. The paper is available here as an arXiv preprint.
+This repository contains the code to reproduce the results of the paper _Active Learning to Guide Labeling Efforts for Question Difficulty Estimation_. 
+[//]: # (The paper is available here as an arXiv preprint.)
 
 ## Workflow
 
@@ -24,10 +25,10 @@ python main.py race_pp
 
 Finally, inspect the results by running the `analysis.ipynb` notebook.
 
+[//]: # (## Cite as)
 
-## Cite as
+[//]: # (If you use this code in your workflow or scientific publication, please consider citing the corresponding paper:)
+[//]: # (```)
+[//]: # (TODO: add bibtex entry)
+[//]: # (```)
 
-If you use this code in your workflow or scientific publication, please consider citing the corresponding paper:
-```
-TODO: add bibtex entry
-```
