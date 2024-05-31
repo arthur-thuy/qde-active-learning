@@ -1,0 +1,11 @@
+TRAIN:
+  EPOCHS: 2
+
+MODEL:
+  MC_DROPOUT: False
+
+EVAL:
+  MC_SAMPLES: 1
+
+AL:
+  FULL_DATA: True

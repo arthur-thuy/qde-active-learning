@@ -1,0 +1,23 @@
+name: qdet_active
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pytorch
+  - pytorch-cuda=12.1
+  - torchaudio
+  - torchvision
+  - conda-forge::yacs
+  - conda-forge::torchmetrics
+  - conda-forge::datasets
+  - conda-forge::evaluate
+  - conda-forge::optimum
+  - seaborn
+  - ipykernel
+  - conda-forge::tabulate
+  - conda-forge::black
+  - conda-forge::isort
+  - anaconda::ipywidgets
+  - expect
+prefix: /home/abthuy/anaconda3/envs/qdet_active

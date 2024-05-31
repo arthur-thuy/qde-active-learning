@@ -1,0 +1,8 @@
+MODEL:
+  MC_DROPOUT: False
+
+EVAL:
+  MC_SAMPLES: 1
+
+AL:
+  HEURISTIC: "random"

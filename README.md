@@ -8,6 +8,7 @@ Download the RACE ([here](https://huggingface.co/datasets/ehovy/race)) and RACE-
 Prepare the datasets by running:
 ```
 python data_preparation.py
+python create_small_dev.py race_pp --size 1000
 ```
 
 Create the environment from the `environment.yml` file and activate it:
