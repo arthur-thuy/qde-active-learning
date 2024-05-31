@@ -162,15 +162,9 @@ cython_debug/
 #.idea/
 
 # data folder
-# **/data/
-# normally do /data but need to add placeholder text file
-**/data/raw/**/*
-**/data/processed/**/*
-!**/data/raw/SAVE_DATASETS_HERE.txt
+**/data/
 
 # checkpoints or output folder
-# **/checkpoints/
-# /regular_training/**/output/
 **/output/
 
 # draft
