@@ -1,5 +1,9 @@
 """Active learning heuristics."""
 
+# standard library imports
+# /
+
+# related third party imports
 import numpy as np
 from baal.active.heuristics import (
     BALD,
@@ -10,6 +14,7 @@ from baal.active.heuristics import (
 from baal.active.heuristics.stochastics import PowerSampling
 from yacs.config import CfgNode
 
+# local application/library specific imports
 from .build import AL_REGISTRY
 
 

@@ -1,7 +1,12 @@
 """Module for data preparation."""
 
+# standard library imports
+# /
+
+# related third party imports
 import structlog
 
+# local application/library specific imports
 from tools.constants import RACE_PP, WRITE_DIR
 from tools.data_manager import RaceDatamanager
 

@@ -1,9 +1,14 @@
 """Build file for active learning."""
 
+# standard library imports
+# /
+
+# related third party imports
 from baal.active import get_heuristic
 from baal.active.heuristics import AbstractHeuristic
 from yacs.config import CfgNode
 
+# local application/library specific imports
 from tools.registry import Registry
 
 AL_REGISTRY = Registry()

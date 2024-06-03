@@ -1,12 +1,15 @@
 """Module for random prediction trainer."""
 
+# standard library imports
 import logging
 from typing import Literal
 
+# related third party imports
 import numpy as np
 import structlog
 from yacs.config import CfgNode
 
+# local application/library specific imports
 from tools.metrics import compute_metrics_classification, compute_metrics_regression
 
 # set up logger

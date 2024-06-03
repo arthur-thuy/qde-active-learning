@@ -1,10 +1,15 @@
 """Module to sample a smaller development set from the regular development set."""
 
+# standard library imports
 import argparse
 import os
 
+# related third party imports
 import pandas as pd
 import structlog
+
+# local application/library specific imports
+# /
 
 # set up logger
 logger = structlog.get_logger()

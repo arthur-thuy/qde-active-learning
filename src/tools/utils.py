@@ -1,16 +1,21 @@
 """Utils file."""
 
+# standard library imports
 import os
 import random
 import time
 from pathlib import Path
 from typing import Optional, Union
 
+# related third party imports
 import numpy as np
 import structlog
 import torch
 from tabulate import tabulate
 from torch.backends import cudnn
+
+# local application/library specific imports
+# /
 
 # set up logger
 logger = structlog.get_logger("qdet")

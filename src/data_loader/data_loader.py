@@ -1,11 +1,14 @@
 """Data loaders."""
 
+# standard library imports
 import os
 from typing import Optional
 
+# related third party imports
 import pandas as pd
 from datasets import ClassLabel, Dataset, DatasetDict
 
+# local application/library specific imports
 from tools.constants import (
     TEST,
     TF_ANSWERS,

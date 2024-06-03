@@ -1,14 +1,17 @@
 """File with configurator functionalities."""
 
+# standard library imports
 import importlib
 import os
 from pathlib import Path
 from typing import Any, Union
 
+# related third party imports
 import structlog
 import yaml
 from yacs.config import CfgNode
 
+# local application/library specific imports
 from tools.utils import ensure_dir
 
 # set up logger

@@ -1,7 +1,14 @@
 """Build file for models."""
 
+# standard library imports
+# /
+
+# related third party imports
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 from yacs.config import CfgNode
+
+# local application/library specific imports
+# /
 
 
 def build_hf_model(model_cfg: CfgNode) -> tuple:

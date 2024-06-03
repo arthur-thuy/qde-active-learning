@@ -3,14 +3,17 @@
 Adapted from Github repo qdet_utils/data_manager/_race_data_manager.py
 """
 
+# standard library imports
 import json
 import os
 from os import listdir
 from typing import Dict
 
+# related third party imports
 import numpy as np
 import pandas as pd
 
+# local application/library specific imports
 from tools.constants import (
     CONTEXT,
     CONTEXT_ID,

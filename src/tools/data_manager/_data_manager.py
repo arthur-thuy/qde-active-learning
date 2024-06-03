@@ -3,11 +3,14 @@
 Adapted from Github repo qdet_utils/data_manager/_data_manager.py
 """
 
+# standard library imports
 import os
 from typing import Dict
 
+# related third party imports
 import pandas as pd
 
+# local application/library specific imports
 from tools.constants import (
     CONTEXT,
     DEV,

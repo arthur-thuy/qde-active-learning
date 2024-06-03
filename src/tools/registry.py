@@ -1,6 +1,13 @@
 """File for managing registering modules."""
 
+# standard library imports
 from typing import Callable
+
+# related third party imports
+# /
+
+# local application/library specific imports
+# /
 
 
 def _register_generic(module_dict: dict, module_name: str, module) -> None:

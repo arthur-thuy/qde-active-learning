@@ -1,11 +1,13 @@
 """Module for HuggingFace trainer."""
 
+# standard library imports
 import logging
 import os
 from copy import deepcopy
 from functools import partial
 from typing import Any, Union
 
+# related third party imports
 import baal
 import numpy as np
 import structlog
@@ -23,6 +25,7 @@ from transformers import (
 )
 from yacs.config import CfgNode
 
+# local application/library specific imports
 from heuristic.build import build_heuristic
 from model.build import build_hf_model
 from tools.constants import TF_TEXT

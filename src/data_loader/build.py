@@ -1,7 +1,12 @@
 """Build file for data loader."""
 
+# standard library imports
+# /
+
+# related third party imports
 from yacs.config import CfgNode
 
+# local application/library specific imports
 from data_loader.data_loader import QDET
 
 

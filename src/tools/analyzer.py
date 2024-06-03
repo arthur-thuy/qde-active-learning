@@ -17,9 +17,8 @@ from datasets import ClassLabel
 from numpy.typing import ArrayLike, NDArray
 from transformers.modelcard import parse_log_history
 
-from tools.metrics import compute_metrics_regression
-
 # local application/library specific imports
+from tools.metrics import compute_metrics_regression
 from tools.utils import save_checkpoint
 
 # set up logger
@@ -300,9 +299,7 @@ def get_single_pred_label(
         ds_sizes = list(all_metrics.keys())
         assert len(ds_sizes) == 1
         test_pred_label = all_metrics[ds_sizes[0]]["test_pred_label"]
-        logger.info(
-            f"Loading preds for `full_data` config ({ds_sizes[0]} samples)"
-        )
+        logger.info(f"Loading preds for `full_data` config ({ds_sizes[0]} samples)")
     else:
         # NOTE: for active learning, find ds_size in function argument
         assert ds_size is not None, "Provide an active learning dataset size"

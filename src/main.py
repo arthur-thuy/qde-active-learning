@@ -7,9 +7,8 @@ import os
 import subprocess
 import time
 
-import structlog
-
 # related third party imports
+import structlog
 import torch
 import torch.backends
 
