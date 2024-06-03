@@ -301,7 +301,7 @@ def get_single_pred_label(
         assert len(ds_sizes) == 1
         test_pred_label = all_metrics[ds_sizes[0]]["test_pred_label"]
         logger.info(
-            f"Loading convergence for `full_data` config ({ds_sizes[0]} samples)"
+            f"Loading preds for `full_data` config ({ds_sizes[0]} samples)"
         )
     else:
         # NOTE: for active learning, find ds_size in function argument
