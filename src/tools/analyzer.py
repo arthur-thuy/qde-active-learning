@@ -243,7 +243,7 @@ def get_train_logs(
     tuple
         Tuple of training logs, lines, and evaluation results
     """
-    output_path = get_output_paths(exp_name, [config_id])[0]
+    [output_path] = get_output_paths(exp_name, [config_id])
 
     if "full_data" in output_path:
         # NOTE: for full data, there is only one ds_size
@@ -271,7 +271,7 @@ def get_train_logs(
 
 
 def get_single_pred_label(
-    exp_name: str, config_id: str, run_id: int, ds_size: Optional[int] = None
+    exp_name: str, config_id: str, run_id: Optional[int] = None, ds_size: Optional[int] = None
 ) -> tuple:
     """Get predictions and labels.
 
@@ -281,8 +281,8 @@ def get_single_pred_label(
         Experiment name
     config_id : str
         Config ID
-    run_id : int
-        Run ID
+    run_id : Optional[int], optional
+        Run ID to plot. If None, all runs are shown, by default None
     ds_size : Optional[int], optional
         Dataset size to show convergence for, by default None
 
@@ -291,25 +291,42 @@ def get_single_pred_label(
     tuple
         Tuple of predictions and labels
     """
-    output_path = get_output_paths(exp_name, [config_id])[0]
+    [output_path] = get_output_paths(exp_name, [config_id])
 
+    preds = []
+    labels = []
     if "full_data" in output_path:
-        # NOTE: for full data, there is only one ds_size
-        all_metrics = torch.load(output_path)["metrics"][f"run_{run_id}"]
-        ds_sizes = list(all_metrics.keys())
-        assert len(ds_sizes) == 1
-        test_pred_label = all_metrics[ds_sizes[0]]["test_pred_label"]
-        logger.info(f"Loading preds for `full_data` config ({ds_sizes[0]} samples)")
+        test_pred_label = torch.load(output_path)["metrics"]
+        run_id_tmp = (
+            [f"run_{run_id}"] if run_id is not None else list(test_pred_label.keys())
+        )
+        for run_key, run_value in test_pred_label.items():
+            if run_key in run_id_tmp:
+                # NOTE: for full data, there is only one ds_size
+                ds_sizes = list(run_value.keys())
+                assert len(ds_sizes) == 1
+                test_pred_label_tmp = run_value[ds_sizes[0]]["test_pred_label"]
+                preds.append(test_pred_label_tmp[0])
+                labels.append(test_pred_label_tmp[1])
+        logger.info(f"Loading preds for `full_data` config ({ds_sizes[0]} samples) for runs {run_id_tmp}")
     else:
         # NOTE: for active learning, find ds_size in function argument
         assert ds_size is not None, "Provide an active learning dataset size"
-        test_pred_label = torch.load(output_path)["metrics"][f"run_{run_id}"][ds_size][
-            "test_pred_label"
-        ]
-        logger.info(
-            f"Loading convergence for active learning config ({ds_size} samples)"
+        test_pred_label = torch.load(output_path)["metrics"]
+        run_id_tmp = (
+            [f"run_{run_id}"] if run_id is not None else list(test_pred_label.keys())
         )
-    return test_pred_label
+        for run_key, run_value in test_pred_label.items():
+            if run_key in run_id_tmp:
+                test_pred_label_tmp = run_value[ds_size]["test_pred_label"]
+                preds.append(test_pred_label_tmp[0])
+                labels.append(test_pred_label_tmp[1])
+        logger.info(
+            f"Loading convergence for active learning config ({ds_size} samples) for runs {run_id_tmp}"
+        )
+    preds = np.concatenate(preds, axis=0)
+    labels = np.concatenate(labels, axis=0)
+    return preds, labels
 
 
 def compute_level_performance(
