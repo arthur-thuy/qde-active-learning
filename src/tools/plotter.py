@@ -623,8 +623,9 @@ def plot_violinplot_racepp(
 
     m, b = np.polyfit(labels, predictions, 1)
 
-    _, ax = plt.subplots(figsize=(8, 8))
-    sns.violinplot(data, color="#c41331", alpha=0.25)
+    # _, ax = plt.subplots(figsize=(8, 8))
+    _, ax = plt.subplots(figsize=(16 / 4, 10 / 3))
+    sns.violinplot(data, color="#1E64C8", alpha=0.25)
     ax.plot([-0.5, 2.5], [0.5, 0.5], c="k", alpha=0.25)
     ax.plot([-0.5, 2.5], [1.5, 1.5], c="k", alpha=0.25)
     ax.set_xlabel("Difficulty")
@@ -632,9 +633,12 @@ def plot_violinplot_racepp(
     ax.set_xticks(diff_levels)
     if m and b:
         x0, x1 = -0.5, 2.5
-        ax.plot([x0, x1], [x0 * m + b, x1 * m + b], c="#c41331", label="linear fit")
-        ax.plot([x0, x1], [x0, x1], "--", c="darkred", label="ideal")
+        ax.plot([x0, x1], [x0 * m + b, x1 * m + b], c="#1E64C8", label="linear fit")
+        ax.plot([x0, x1], [x0, x1], "--", c="darkblue", label="ideal")
     ax.legend()
+    # get ticks in sans-serif if sans-serif is used
+    ax.xaxis.get_major_formatter()._usetex = False
+    ax.yaxis.get_major_formatter()._usetex = False
     if save:
         plt.tight_layout()
         ensure_dir(os.path.dirname(savefig_kwargs["fname"]))
