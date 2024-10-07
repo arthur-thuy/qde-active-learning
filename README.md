@@ -1,7 +1,7 @@
 # Active Learning to Guide Labeling Efforts for Question Difficulty Estimation
 This repository contains the code to reproduce the results of the paper _Active Learning to Guide Labeling Efforts for Question Difficulty Estimation_. 
 
-[//]: # (The paper is available here as an arXiv preprint.)
+The paper is available [here](https://arxiv.org/abs/2409.09258) as an arXiv preprint.
 
 ## Workflow
 
@@ -26,10 +26,16 @@ python main.py race_pp
 
 Finally, inspect the results by running the `analysis.ipynb` notebook.
 
-[//]: # (## Cite as)
+## Cite as
 
-[//]: # (If you use this code in your workflow or scientific publication, please consider citing the corresponding paper:)
-[//]: # (```)
-[//]: # (TODO: add bibtex entry)
-[//]: # (```)
+If you use this code in your workflow or scientific publication, please cite the corresponding paper:
+```
+@article{thuy2024active,
+  title={Active Learning to Guide Labeling Efforts for Question Difficulty Estimation},
+  author={Thuy, Arthur and Loginova, Ekaterina and Benoit, Dries F},
+  journal={arXiv preprint arXiv:2409.09258},
+  year={2024},
+  doi={10.48550/arXiv.2409.09258}
+}
+```
 
